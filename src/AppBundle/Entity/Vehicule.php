@@ -208,7 +208,7 @@ class Vehicule
     /**
      * Get voyageur
      *
-     * @return \Test\TestBundle\Entity\Voyageur
+     * @return AppBundle\Entity\Voyageur
      */
     public function getVoyageur()
     {

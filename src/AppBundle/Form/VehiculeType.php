@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use AppBundle\Form\VoyageurType;
+use AppBundle\Entity\Voyageur;
 
 class VehiculeType extends AbstractType
 {
@@ -22,8 +23,11 @@ class VehiculeType extends AbstractType
             ->add('marque')
             ->add('type')
             ->add('nombrePlace')
-            ->add('disponibilite');
-            //->add('voyageur');
+            ->add('disponibilite')
+            ->add('voyageur', EntityType::class, array(
+                'class' => Voyageur::class,
+                'choice_label' => 'nom',
+            ));
     }
     
     /**

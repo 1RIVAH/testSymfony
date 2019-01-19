@@ -17,7 +17,7 @@ class VehiculeController extends Controller
     {
         $vehicule = new Vehicule();
         $form = $this->createForm(VehiculeType::class, $vehicule);
-
+      //  dump($vehicule);die();
         $form->handleRequest($requete);
         if($form->isValid() && $form->isSubmitted()){
 /*
@@ -28,7 +28,9 @@ class VehiculeController extends Controller
             $vehicule->setNombrePlace($donnee->getNombrePlace());
             $vehicule->setDisponibilite($donnee->getDisponibilite());
             $vehicule->setVoyageur($donnee->getVoyageur());
+            d
   */
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($vehicule);
             $em->flush();
