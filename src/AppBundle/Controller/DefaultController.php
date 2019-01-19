@@ -3,18 +3,11 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
-
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/acceuil", name="homepage")
-     */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        return new Response('Salut salut');
+        return $this->render('TestBundle:Default:index.html.twig');
     }
 }

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h3>Insertion Voiture</h3>
+    {{ form_start(form) }}
+        <div  id="prenom_form">
+            <div class="form-group">
+           {{ form_label(form.numero, 'N° du vehicule', {'label_attr':{'class':'col-sm-2 control-label'}}) }}
+           {{ form_widget(form.numero) }}
+                <br/>
+                {{ form_label(form.marque, 'Marque du vehicule', {'label_attr':{'class':'col-sm-2 control-label'}}) }}
+                {{ form_widget(form.marque) }}
+                <br/>
+                {{ form_label(form.type, 'Type du vehicule', {'label_attr':{'class':'col-sm-2 control-label'}}) }}
+                {{ form_widget(form.type) }}
+                <br/>
+                {{ form_label(form.nombrePlace, 'Nombre de place', {'label_attr':{'class':'col-sm-2 control-label'}}) }}
+                {{ form_widget(form.nombrePlace) }}
+                <br/>
+                {{ form_label(form.disponibilite, 'Disponiblite', {'label_attr':{'class':'col-sm-2 control-label'}}) }}
+                {{ form_widget(form.disponibilite) }}
+                <br/>
+                <input type="submit" value="valider">
+            </div>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}
