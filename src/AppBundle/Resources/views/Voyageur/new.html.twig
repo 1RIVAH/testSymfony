@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h3>Création Voyageur</h3>
+    <br/>
+        {{ form_start(form) }}
+        <div class="form-group">
+            <div  id="nom_form">
+              {{ form_label(form.nom, 'Nom', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
+                {{ form_widget(form.nom) }}
+               </div>
+            <div  id="prenom_form">
+                {{ form_label(form.prenom, 'Prenom', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
+                {{ form_widget(form.prenom) }}
+               </div>
+                <div  id="adresse_form">
+                {{ form_label(form.adresse, 'Adresse', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
+                {{ form_widget(form.adresse) }}
+               </div>
+             <div  id="telephone_form">
+               {{ form_label(form.telephone, 'Telephone', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
+               {{ form_widget(form.telephone) }}
+                </div>
+                <br/>
+                {{ form_widget(form.enregistrer, {'attr': {'class': 'col-sm-1 btn btn-primary'}}) }}
+           </div>
+        </div>
+{{ form_end(form) }}
+{% endblock %}
