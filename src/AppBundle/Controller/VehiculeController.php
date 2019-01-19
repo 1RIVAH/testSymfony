@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Vehicule;
-use AppBundle\VehiculeType;
+use AppBundle\Form\VehiculeType;
 
 class VehiculeController extends Controller
 {
@@ -33,7 +33,7 @@ class VehiculeController extends Controller
             $em->persist($vehicule);
             $em->flush();
         }
-        return $this->render("AppBundle:Vehicule:new.html.twig", array(
+        return $this->render("Vehicule/new.html.twig", array(
             'vehicule'=>$vehicule,
             'form'=>$form->createView(),
         ));
