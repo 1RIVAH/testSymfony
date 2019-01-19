@@ -33,7 +33,7 @@ class VoyageurController extends Controller
 
             }
 
-            return $this->render('TestBundle:Voyageur:new.html.twig', array(
+            return $this->render('Voyageur/new.html.twig', array(
                 'voyageur'=>$voyageur,
                 'form'=>$form->createView(),
             ));

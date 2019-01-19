@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\TestBundle\Controller;
+namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 

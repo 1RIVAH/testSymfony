@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Voyageur
  *
  * @ORM\Table(name="vehicule")
- * @ORM\Entity(repositoryClass="Test\TestBundle\Repository\VehiculeRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\VehiculeRepository")
  */
 class Vehicule
 {
@@ -57,7 +57,7 @@ class Vehicule
     private $disponibilite=true;
 
     /**
-     *@ORM\ManyToOne(targetEntity="Test\TestBundle\Entity\Voyageur")
+     *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Voyageur")
      * @ORM\JoinColumn(name="user_id", nullable=true, referencedColumnName="id", onDelete="SET NULL")
      */
     private $voyageur;
@@ -194,11 +194,11 @@ class Vehicule
     /**
      * Set voyageur
      *
-     * @param \Test\TestBundle\Entity\Voyageur $voyageur
+     * @param AppBundle\Entity\Voyageur $voyageur
      *
      * @return Vehicule
      */
-    public function setVoyageur(\Test\TestBundle\Entity\Voyageur $voyageur = null)
+    public function setVoyageur(AppBundle\Entity\Voyageur $voyageur = null)
     {
         $this->voyageur = $voyageur;
 

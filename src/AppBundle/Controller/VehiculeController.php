@@ -33,7 +33,7 @@ class VehiculeController extends Controller
             $em->persist($vehicule);
             $em->flush();
         }
-        return $this->render("TestBundle:Vehicule:new.html.twig", array(
+        return $this->render("AppBundle:Vehicule:new.html.twig", array(
             'vehicule'=>$vehicule,
             'form'=>$form->createView(),
         ));

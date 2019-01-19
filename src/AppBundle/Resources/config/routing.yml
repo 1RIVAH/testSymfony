@@ -1,11 +1,4 @@
 # src/Test/TestBundle/Resources/config/routing.yml
 
 
-test_testBundle_view:
-    path:    /platform/advert/{id}
-    defaults: { _controller: AppBundle:Advert:view}
-
-test_testBundle_add:
-    path:    /platform/add
-    defaults: {_controller: AppBundle:Advert:add}
 

@@ -30,7 +30,7 @@ class VoyageurType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Test\TestBundle\Entity\Voyageur'
+            'data_class' => 'AppBundle\Entity\Voyageur'
         ));
     }
 
