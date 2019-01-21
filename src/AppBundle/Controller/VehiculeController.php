@@ -17,27 +17,24 @@ class VehiculeController extends Controller
     {
         $vehicule = new Vehicule();
         $form = $this->createForm(VehiculeType::class, $vehicule);
-      //  dump($vehicule);die();
         $form->handleRequest($requete);
+
         if($form->isValid() && $form->isSubmitted()){
-/*
             $donnee = $form->getData();
+            dump($donnee);die;
             $vehicule->setNumero($donnee->getNumero());
             $vehicule->setMarque($donnee->getMarque());
             $vehicule->setType($donnee->getType());
             $vehicule->setNombrePlace($donnee->getNombrePlace());
             $vehicule->setDisponibilite($donnee->getDisponibilite());
             $vehicule->setVoyageur($donnee->getVoyageur());
-            d
-  */
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($vehicule);
             $em->flush();
         }
         return $this->render("Vehicule/new.html.twig", array(
-            'vehicule'=>$vehicule,
-            'form'=>$form->createView(),
+            'form'      => $form->createView(),
         ));
     }
 
