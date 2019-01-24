@@ -27,7 +27,7 @@ class VehiculeType extends AbstractType
             ->add('voyageur', EntityType::class, array(
                 'class' => Voyageur::class,
                 'choice_label' => 'nom',
-            ));
+                ));
     }
     
     /**

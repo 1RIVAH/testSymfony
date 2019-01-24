@@ -12,7 +12,23 @@ use AppBundle\Form\VoyageurType;
 class VoyageurController extends Controller
 {
     /**
-     * @Route("/voyageur", name="test_voyageur_new")
+     * @Route("/Voyageur", name="index_voyageur"))
+     */
+    public function indexAction()
+    {
+        $tab = [];
+        $em = $this->getDoctrine()->getManager();
+        $voyageurs = $em->getRepository("AppBundle:Voyageur")->findAll();
+        foreach($voyageurs as $val){
+            $tab[] = array($val->getNom(), $val->getPrenom(), $val->getAdresse(), $val->getTelephone());
+        }
+        return $this->render("Voyageur/index.html.twig", array(
+            'voyageurs'=>$voyageurs,
+        ));
+    }
+
+    /**
+     * @Route("/voyageur/ajout", name="ajout_voyageur")
      */
     public function newAction(Request $request)
     {
@@ -29,7 +45,8 @@ class VoyageurController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($voyageur);
                 $em->flush();
-            $this->addFlash('message', 'Creation voyageur enregistrer');
+            $this->addFlash("success", "Creation voyageur enregistrer");
+                return $this->redirectToRoute("index_voyageur", array('id'=> $voyageur->getId()));
 
             }
 

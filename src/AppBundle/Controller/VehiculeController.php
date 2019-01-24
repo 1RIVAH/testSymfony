@@ -11,7 +11,7 @@ use AppBundle\Form\VehiculeType;
 class VehiculeController extends Controller
 {
     /**
-     * @Route("/vehicule", name="test_vehicule_new")
+     * @Route("/vehicule", name="vehicule_new")
      */
     public function newVehicule(Request $requete)
     {
@@ -21,7 +21,7 @@ class VehiculeController extends Controller
 
         if($form->isValid() && $form->isSubmitted()){
             $donnee = $form->getData();
-            dump($donnee);die;
+            //dump($donnee);die;
             $vehicule->setNumero($donnee->getNumero());
             $vehicule->setMarque($donnee->getMarque());
             $vehicule->setType($donnee->getType());

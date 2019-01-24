@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
-
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,6 +20,11 @@ class Vehicule
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    public function __construct()
+    {
+        $this->voyageur = new ArrayCollection();
+    }
 
     /**
      * @var string
@@ -57,8 +62,8 @@ class Vehicule
     private $disponibilite=true;
 
     /**
-     *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Voyageur")
-     * @ORM\JoinColumn(name="user_id", nullable=true, referencedColumnName="id", onDelete="SET NULL")
+     *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Voyageur", cascade={"persist"})
+     * @ORM\JoinColumn(name="voyageur_nom", nullable=true, onDelete="SET NULL")
      */
     private $voyageur;
     /**
@@ -194,11 +199,11 @@ class Vehicule
     /**
      * Set voyageur
      *
-     * @param AppBundle\Entity\Voyageur $voyageur
+     * @param \AppBundle\Entity\Voyageur $voyageur
      *
      * @return Vehicule
      */
-    public function setVoyageur(AppBundle\Entity\Voyageur $voyageur = null)
+    public function setVoyageur(\AppBundle\Entity\Voyageur $voyageur = null)
     {
         $this->voyageur = $voyageur;
 
@@ -208,7 +213,7 @@ class Vehicule
     /**
      * Get voyageur
      *
-     * @return AppBundle\Entity\Voyageur
+     * @return \AppBundle\Entity\Voyageur
      */
     public function getVoyageur()
     {
