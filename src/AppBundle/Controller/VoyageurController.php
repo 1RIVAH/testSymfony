@@ -12,16 +12,21 @@ use AppBundle\Form\VoyageurType;
 class VoyageurController extends Controller
 {
     /**
-     * @Route("/Voyageur", name="index_voyageur"))
+     * @Route("/voyageur", name="index_voyageur")
      */
     public function indexAction()
     {
-        $tab = [];
+        //$tab = [];
         $em = $this->getDoctrine()->getManager();
         $voyageurs = $em->getRepository("AppBundle:Voyageur")->findAll();
-        foreach($voyageurs as $val){
+        dump($voyageurs); die();
+        /*
+         * foreach($voyageurs as $val){
             $tab[] = array($val->getNom(), $val->getPrenom(), $val->getAdresse(), $val->getTelephone());
         }
+         */
+
+
         return $this->render("Voyageur/index.html.twig", array(
             'voyageurs'=>$voyageurs,
         ));
@@ -55,5 +60,10 @@ class VoyageurController extends Controller
                 'form'=>$form->createView(),
             ));
         }
-
+/**
+ * @Route("/post/update/{id}", name="modif_voyageur")
+ */
+    public function modifAction(Request $request, $id){
+        
+    }
 }
