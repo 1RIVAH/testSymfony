@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h2>Voyageur</h2>
+    <table>
+        <tbody>
+        <tr>
+        <th>Id: </th>
+        <td>{{ voyageur.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom : </th>
+            <td>{{ voyageur.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prenom : </th>
+            <td>{{ voyageur.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Adresse : </th>
+            <td>{{ voyageur.adresse }}</td>
+        </tr>
+        <tr>
+            <th>Telephone : </th>
+            <td>{{ voyageur.telephone }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path("index_voyageur") }}">Retourner vers la liste des voyageurs</a>
+        </li>
+    </ul>
+{% endblock %}

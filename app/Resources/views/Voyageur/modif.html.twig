@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h3>Création Voyageur</h3>
+    <br/>
+        {{ form_start(editForm) }}
+        <div class="form-group">
+            <div  id="nom_form">
+              {{ form_label(editForm.nom, 'Nom', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
+                {{ form_widget(editForm.nom) }}
+               </div>
+            <div  id="prenom_form">
+                {{ form_label(editForm.prenom, 'Prenom', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
+                {{ form_widget(editForm.prenom) }}
+               </div>
+                <div  id="adresse_form">
+                {{ form_label(editForm.adresse, 'Adresse', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
+                {{ form_widget(editForm.adresse) }}
+               </div>
+             <div  id="telephone_form">
+               {{ form_label(editForm.telephone, 'Telephone', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
+               {{ form_widget(editForm.telephone) }}
+                </div>
+                <br/>
+           </div>
+        </div>
+        <input type="submit" value="Modifier" />
+{{ form_end(editForm) }}
+
+
+{% for message in app.flashes('success') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+{% endblock %}

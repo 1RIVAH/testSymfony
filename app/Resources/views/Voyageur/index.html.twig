@@ -2,7 +2,13 @@
 
 {% block body %}
 <div class="form-inline custom-control">
-<h3>Liste des Voyageurs</h3>
+<h3>Liste des voyageurs</h3>
+    <ul>
+        <li>
+            {#<a href="{{ path('user_new') }}">Create a new user</a>#}
+            <a href="{{ path('ajout_voyageur') }}">Créer un nouveau voyageur</a>
+        </li>
+    </ul>
 </div>
 <table class="table table-striped table-hover">
     <thead>
@@ -25,28 +31,15 @@
           <td>{{ voyageur.adresse }}</td>
           <td>{{ voyageur.telephone }}</td>
           <td>
-              <ul>
-                  <li>
-                      <I>Afficher</I>
-                  </li>
+            <a href="{{ path("affiche_voyageur", {'id':voyageur.id}) }}" class="btn-sm btn-primary">Affichage</a>
+            <a href="{{ path("modif_voyageur", {'id': voyageur.id}) }}" class="btn-sm btn-success">Modifier</a>
+            <a href="{{ path("supprimer_voyageur", {'id': voyageur.id}) }}" class="btn-sm btn-danger">Supprimer</a>
 
-              <li>
-                  <I>Modifier</I>
-              </li>
-                  <li>
-                      <I>Supprimer</I>
-                  </li>
-              </ul>
           </td>
       </tr>
         {% endfor %}
     </tbody>
 </table>
 
-    <ul>
-        <li>
-            {#<a href="{{ path('user_new') }}">Create a new user</a>#}
-            <a href="{{ path('ajout_voyageur') }}">Créer un nouveau voyageur</a>
-        </li>
-    </ul>
+
 {% endblock %}

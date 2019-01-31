@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Voyageur;
 use AppBundle\Form\VoyageurType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class VoyageurController extends Controller
@@ -19,7 +20,7 @@ class VoyageurController extends Controller
         //$tab = [];
         $em = $this->getDoctrine()->getManager();
         $voyageurs = $em->getRepository("AppBundle:Voyageur")->findAll();
-        dump($voyageurs); die();
+        //dump($voyageurs); die();
         /*
          * foreach($voyageurs as $val){
             $tab[] = array($val->getNom(), $val->getPrenom(), $val->getAdresse(), $val->getTelephone());
@@ -61,9 +62,47 @@ class VoyageurController extends Controller
             ));
         }
 /**
- * @Route("/post/update/{id}", name="modif_voyageur")
+ * @Route("/voyageur/update/{id}", name="modif_voyageur")
  */
     public function modifAction(Request $request, $id){
-        
+        $em = $this->getDoctrine()->getManager();
+        $voyageur = $em->getRepository("AppBundle:Voyageur")->find($id);
+
+        if($voyageur === null){
+            throw new NotFoundHttpException("L'annonce d'id ".$id. "n'existe pas.");
+
+        }
+        $editForm = $this->createForm(VoyageurType::class, $voyageur);
+        $editForm->handleRequest($request);
+        //dump($editForm);die();
+        if($request->isMethod('POST') && $editForm->isValid()){
+            $em->flush();
+            $this->addFlash("success", "modification ok");
+
+            return $this->redirectToRoute('index_voyageur', array('id'=>$voyageur->getId()));
+        }
+        return $this->render('Voyageur/modif.html.twig', array(
+            'voyageur' => $voyageur,
+            'editForm' => $editForm->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/voyageur/view/{id}", name="affiche_voyageur")
+     */
+    public function afficherAction($id){
+        $voyageur = $this->getDoctrine()->getRepository("AppBundle:Voyageur")->find($id);
+        return $this->render("Voyageur/view.html.twig", ['voyageur'=>$voyageur]);
+    }
+    /**
+     * @Route("/voyageur/delete/{id}", name="supprimer_voyageur")
+     */
+    public function supprimerAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $voyageur = $em->getRepository("AppBundle:Voyageur")->find($id);
+        $em->remove($voyageur);
+        $em->flush();
+        $this->addFlash('message', 'Suppression reussi');
+        return $this->redirectToRoute("index_voyageur");
     }
 }

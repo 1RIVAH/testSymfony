@@ -11,7 +11,19 @@ use AppBundle\Form\VehiculeType;
 class VehiculeController extends Controller
 {
     /**
-     * @Route("/vehicule", name="vehicule_new")
+     * @Route("/vehicule", name="indew_vehicule")
+     */
+    public function indexAction()
+    {
+      $em = $this->getDoctrine()->getManager();
+      $vehicule = $em->getRepository("AppBundle:Vehicule")->findAll();
+
+        return $this->render("Vehicule/index.html.twig", [
+            'vehicule'=>$vehicule,
+        ]);
+    }
+    /**
+     * @Route("/vehicule/new", name="vehicule_new")
      */
     public function newVehicule(Request $requete)
     {

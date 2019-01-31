@@ -20,7 +20,6 @@ class VoyageurType extends AbstractType
             ->add('prenom')
             ->add('adresse')
             ->add('telephone')
-            ->add('enregistrer', SubmitType::class)
             ;
     }
     
