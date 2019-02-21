@@ -69,7 +69,7 @@ class Voyageur
      */
     public function setNom($nom)
     {
-        $this->nom = $nom;
+        $this->nom = strtoupper($nom);
 
         return $this;
     }
@@ -93,7 +93,7 @@ class Voyageur
      */
     public function setPrenom($prenom)
     {
-        $this->prenom = $prenom;
+        $this->prenom = ucwords($prenom);
 
         return $this;
     }
@@ -117,7 +117,7 @@ class Voyageur
      */
     public function setAdresse($adresse)
     {
-        $this->adresse = $adresse;
+        $this->adresse = strtoupper($adresse);
 
         return $this;
     }

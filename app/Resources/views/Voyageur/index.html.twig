@@ -1,20 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h3 class="btn-block btn-info">Liste des voyageurs</h3>
-    <div class="form-inline custom-control">
+<div class="dropdown-header bg-danger">
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="{{ path('ajout_voyageur') }}">Inscription</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Reservation</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Service</a>
+  </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Depart</a>
+            </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Contact</a>
+  </li>
+</ul></div>
 
-    <ul>
-        <li>
-            {#<a href="{{ path('user_new') }}">Create a new user</a>#}
-            <a href="{{ path('ajout_voyageur') }}">Créer un nouveau voyageur</a>
-        </li>
-    </ul>
+        <div id="gauche">
+    <div class="">
+            <br/>
+            <ul>
+            <li><a href="{{ path('index_voyageur') }}">Liste voyageur</a></li>
+            <li><a href="{{ path('vehicule_new') }}">Ajout vehicule</a></li>
+            <li><a href="{{ path('index_vehicule') }}">Liste vehicule</a></li>
+            </ul>
 </div>
-<table class="table table-striped table-hover">
+        </div>
+<div id="droite">
+
+        <div class="times">
+<table class="table table-striped table-hover" id="action">
+
     <thead>
-    <tr>
-        <th>Id</th>
+    <tr class="table-primary">
         <th>Nom</th>
         <th>Prenom</th>
         <th>Adresse</th>
@@ -26,21 +48,26 @@
     {% for voyageur in voyageurs %}
       <tr>
           {#<td><a href="{{ path('index_voyageur', {'id':voyageur.id}) }}">{{ voyageur.id }}</a> </td>#}
-          <td><a href="{{ path('index_voyageur', {'id':voyageur.id}) }}">{{ voyageur.id }}</a> </td>
           <td>{{ voyageur.nom }}</td>
           <td>{{ voyageur.prenom }}</td>
           <td>{{ voyageur.adresse }}</td>
           <td>{{ voyageur.telephone }}</td>
           <td>
-            <a href="{{ path("affiche_voyageur", {'id':voyageur.id}) }}" class="btn-sm btn-primary">Affichage</a>
-            <a href="{{ path("modif_voyageur", {'id': voyageur.id}) }}" class="btn-sm btn-success">Modifier</a>
-            <a href="{{ path("supprimer_voyageur", {'id': voyageur.id}) }}" class="btn-sm btn-danger">Supprimer</a>
-
+              <a href="{{ path("affiche_voyageur", {'id':voyageur.id}) }}" class="btn-sm btn-light">
+                  <img src="{{ asset('images/png/search-alt.png') }}" alt="image" class="images">
+              </a>
+              <a href="{{ path("modif_voyageur", {'id': voyageur.id}) }}" class="btn-sm btn-light">
+                  <img src="{{ asset('images/png/edit.png') }}"  alt="image" class="images"></a>
+              <a href="{{ path("supprimer_voyageur", {'id': voyageur.id}) }}" class="btn-sm btn-light">
+                  <img src="{{ asset('images/png/close.png')  }}" alt="image" class="images">
+              </a>
           </td>
       </tr>
         {% endfor %}
     </tbody>
+
 </table>
-
-
+        </div>
+    </div>
+    </div>
 {% endblock %}

@@ -24,6 +24,7 @@ class Vehicule
     public function __construct()
     {
         $this->voyageur = new ArrayCollection();
+
     }
 
     /**
@@ -57,13 +58,13 @@ class Vehicule
     /**
      * @var bool
      *
-     * @ORM\Column(name="disponibilite", type="boolean")
+     * @ORM\Column(name="disponibilite", type="boolean", nullable=true, options={"default":"0"})
      */
-    private $disponibilite=true;
+    protected $disponibilite=true;
 
     /**
      *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Voyageur", cascade={"persist"})
-     * @ORM\JoinColumn(name="voyageur_nom", nullable=true, onDelete="SET NULL")
+     * @ORM\JoinColumn(name="voyageur_nom", nullable=false)
      */
     private $voyageur;
     /**
@@ -181,11 +182,21 @@ class Vehicule
      */
     public function setDisponibilite($disponibilite)
     {
-        $this->disponibilite = $disponibilite;
 
-        return $this;
+        $dispo = "oui";
+        $nondispo = "non";
+        if($disponibilite == 1){
+             $vraie = $dispo;
+        }elseif($disponibilite == 0 or null === $disponibilite){
+             $vraie = $nondispo;
+        }
+
+
+    $this->disponibilite = $vraie;
+           return $this;
+
+
     }
-
     /**
      * Get disponibilite
      *
@@ -195,7 +206,6 @@ class Vehicule
     {
         return $this->disponibilite;
     }
-
     /**
      * Set voyageur
      *

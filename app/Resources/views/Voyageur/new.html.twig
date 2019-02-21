@@ -1,36 +1,74 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h3 xmlns="http://www.w3.org/1999/html">Création Voyageur</h3>
+    <div class="dropdown-header bg-danger">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ path('ajout_voyageur') }}">Inscription</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Reservation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Service</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Depart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Contact</a>
+            </li>
+        </ul></div>
+
+    <div id="gauche">
+        <div class="">
+            <br/>
+            <ul>
+                <li><a href="{{ path('index_voyageur') }}">Liste voyageur</a></li>
+                <li><a href="{{ path('vehicule_new') }}">Ajout vehicule</a></li>
+                <li><a href="{{ path('index_vehicule') }}">Liste vehicule</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div id="droite">
+        <div class="">
+<br/>
+            <h3 xmlns="http://www.w3.org/1999/html" align="center">Création Voyageur</h3>
     <br/>
         {{ form_start(form) }}
-        <div class="form-group">
-            <div  id="nom_form">
-              {{ form_label(form.nom, 'Nom', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
-                {{ form_widget(form.nom) }}
-               </div>
-            <div  id="prenom_form">
-                {{ form_label(form.prenom, 'Prenom', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
-                {{ form_widget(form.prenom) }}
-               </div>
-                <div  id="adresse_form">
-                {{ form_label(form.adresse, 'Adresse', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
-                {{ form_widget(form.adresse) }}
-               </div>
-             <div  id="telephone_form">
-               {{ form_label(form.telephone, 'Telephone', {'label_attr':{'class':'col-sm-1 control-label'}}) }}
-               {{ form_widget(form.telephone) }}
-                </div>
-                <br/>
-                </div>
-        </div>
-<input type="submit" value="Enregistrer" />
-{{ form_end(form) }}
+            <div class="container">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nom</label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.nom, {'attr':{'class':'form-control', 'placeholder':'nom'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Prenom</label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.prenom, {'attr':{'class':'form-control', 'placeholder':'prenom'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Adresse</label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.adresse, {'attr':{'class':'form-control', 'placeholder':'adresse'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Telephone</label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.telephone, {'attr':{'class':'form-control', 'placeholder':'telephone'}}) }}
+                        </div>
+                    </div>
 
-<ul>
-</br>
-<li>
-    <a href="{{ path('index_voyageur') }}">Retourner vers la liste des voyageurs</a>
-</li>
-</ul>
-
+            </div>
+            <br/>
+            <br/>
+            <div align="center">
+<input class="btn btn-outline-primary" type="submit" value="Enregistrer" />
+            </div>
+                {{ form_end(form) }}
+</div>
+    </div>
 {% endblock %}

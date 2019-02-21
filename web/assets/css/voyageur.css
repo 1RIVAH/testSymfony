@@ -1,0 +1,52 @@
+#action{
+    text-align: center;
+}
+#right{
+    text-align: right;
+}
+.back{
+    background-color: rgba(226, 226, 226, 0.39);
+}
+
+.times{
+    font-family: "times new roman";
+    font-size: 0.9pc;
+
+}
+.vue{
+    margin: 10px;
+    width: 400px;
+    border-style: double;
+    border-color: #880000;
+    height: 250px;
+
+}
+.margin{
+    margin: 30px;
+}
+#gauche{
+    float: left;
+    width: 15%;
+    margin: 0px;
+    height:1500px;
+    background-color: #c0c0c0;
+    font-family: "times new roman";
+    font-size: large;
+    color: #002752;
+    border-color: #002752;
+
+    font-style: inherit;
+}
+
+#droite{
+    float: right;
+    width: 85%;
+    height: 1500px;
+    background-color: transparent;
+
+}
+.images{
+    height:15px;
+    width: 15px;
+    cursor: pointer;
+}

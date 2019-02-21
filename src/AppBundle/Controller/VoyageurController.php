@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Voyageur;
 use AppBundle\Form\VoyageurType;
+
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
@@ -19,17 +20,20 @@ class VoyageurController extends Controller
     {
         //$tab = [];
         $em = $this->getDoctrine()->getManager();
-        $voyageurs = $em->getRepository("AppBundle:Voyageur")->findAll();
+        //$voy = new Voyageur();
+        $voyageurs  = $em->getRepository("AppBundle:Voyageur")->findAll();
+       // $nom = $voy->getNom();
+       // $nom = strtoupper($nom);
+
         //dump($voyageurs); die();
         /*
          * foreach($voyageurs as $val){
             $tab[] = array($val->getNom(), $val->getPrenom(), $val->getAdresse(), $val->getTelephone());
         }
          */
-
-
-        return $this->render("Voyageur/index.html.twig", array(
+      return $this->render("Voyageur/index.html.twig", array(
             'voyageurs'=>$voyageurs,
+
         ));
     }
 
@@ -40,10 +44,11 @@ class VoyageurController extends Controller
     {
         $voyageur = new Voyageur();
         $form = $this->createForm(VoyageurType::class, $voyageur);
-        $nom =$form['nom']->isEmpty();
-        $prenom = $form['prenom']->isEmpty();
-        $adresse = $form['adresse']->isEmpty();
-        $telephone = $form['telephone']->isEmpty();
+        $nom = $form['nom'];
+        $prenom = $form['prenom'];
+        $adresse = $form['adresse'];
+        $telephone = $form['telephone'];
+
 
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()){
@@ -51,7 +56,7 @@ class VoyageurController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($voyageur);
                 $em->flush();
-            $this->addFlash("success", "Creation voyageur enregistrer");
+            //$this->addFlash("success", "Creation voyageur enregistrer");
                 return $this->redirectToRoute("index_voyageur", array('id'=> $voyageur->getId()));
 
             }
@@ -59,6 +64,7 @@ class VoyageurController extends Controller
             return $this->render('Voyageur/new.html.twig', array(
                 'voyageur'=>$voyageur,
                 'form'=>$form->createView(),
+
             ));
         }
 /**
@@ -77,7 +83,7 @@ class VoyageurController extends Controller
         //dump($editForm);die();
         if($request->isMethod('POST') && $editForm->isValid()){
             $em->flush();
-            $this->addFlash("success", "modification ok");
+            //$this->addFlash("success", "modification ok");
 
             return $this->redirectToRoute('index_voyageur', array('id'=>$voyageur->getId()));
         }

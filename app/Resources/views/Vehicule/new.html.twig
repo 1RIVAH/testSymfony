@@ -1,8 +1,39 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h3>Insertion Voiture</h3>
+    <div class="dropdown-header bg-danger">
+        <ul class="nav justify-content-end">
+            <li class="nav-item" >
+                <a class="nav-link active" href="{{ path('ajout_voyageur') }}" >Inscription</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Reservation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Service</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Depart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Contact</a>
+            </li>
+        </ul></div>
+
+    <div id="gauche">
+        <div class="">
+            <br/>
+            <ul>
+                <li><a href="{{ path('index_voyageur') }}">Liste voyageur</a></li>
+                <li><a href="{{ path('vehicule_new') }}">Ajout vehicule</a></li>
+                <li><a href="{{ path('index_vehicule') }}">Liste vehicule</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div id="droite">
+    <h3 ALIGN="center">Insertion Voiture</h3>
     {{ form_start(form) }}
-        <div  id="prenom_form">
+        <div  class="col-12">
             <div class="form-group">
            {{ form_label(form.numero, 'N° du vehicule', {'label_attr':{'class':'col-sm-2 control-label'}}) }}
            {{ form_widget(form.numero) }}
@@ -17,6 +48,7 @@
                 {{ form_widget(form.nombrePlace) }}
                 <br/>
                 {{ form_label(form.disponibilite, 'Disponiblite', {'label_attr':{'class':'col-sm-2 control-label'}}) }}
+
                 {{ form_widget(form.disponibilite) }}
                 <br/>
                 <br/>
@@ -24,8 +56,10 @@
                 {{ form_widget(form.voyageur) }}
                 <br/>
                 <br/>
-                <input type="submit" value="valider">
+                <input class="btn btn-primary" type="submit" value="valider" >
             </div>
         </div>
     {{ form_end(form) }}
+
+    </div>
 {% endblock %}
