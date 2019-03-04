@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Voyageur;
 use AppBundle\Form\VoyageurType;
 
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class VoyageurController extends Controller
@@ -48,7 +47,6 @@ class VoyageurController extends Controller
         $prenom = $form['prenom'];
         $adresse = $form['adresse'];
         $telephone = $form['telephone'];
-
 
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()){

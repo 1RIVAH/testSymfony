@@ -182,8 +182,8 @@ class Vehicule
      */
     public function setDisponibilite($disponibilite)
     {
-
-        $dispo = "oui";
+ /*
+ *  $dispo = "oui";
         $nondispo = "non";
         if($disponibilite == 1){
              $vraie = $dispo;
@@ -191,11 +191,18 @@ class Vehicule
              $vraie = $nondispo;
         }
 
-
-    $this->disponibilite = $vraie;
+ */
+    $this->disponibilite = $disponibilite;
            return $this;
-
-
+    }
+    public function getDispo(){
+        //return ($this->disponibilite === true)?"oui":"non";
+        if($this->disponibilite == true){
+            return "oui";
+        }else{
+            return "non";
+        }
+        
     }
     /**
      * Get disponibilite

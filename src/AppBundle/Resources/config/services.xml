@@ -6,11 +6,11 @@
 
     <!--
     <services>
-        <service id="test.example" class="Test\TestBundle\Example">
-            <argument type="service" id="service_id" />
+        <Service id="test.example" class="Test\TestBundle\Example">
+            <argument type="Service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>
-        </service>
+        </Service>
     </services>
     -->
 </container>

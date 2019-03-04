@@ -44,8 +44,10 @@ class VehiculeController extends Controller
        if($form->isValid() && $form->isSubmitted()){
             //dump($donnee);die;
 
-           $vehicule->setDisponibilite($vehicule->getDisponibilite());
-          dump($vehicule); die();
+         // $vehicule->setDisponibilite($vehicule->getDisponibilite());
+         //$vehicule->getDispo();
+         //dump($vehicule); die();
+
 
            $em = $this->getDoctrine()->getManager();
             $em->persist($vehicule);
